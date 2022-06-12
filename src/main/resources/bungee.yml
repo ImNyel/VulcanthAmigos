@@ -1,0 +1,6 @@
+name: VulcanthAmigos
+main: com.vulcanth.nyel.Main
+author: kNyel
+version: 1.2.1
+depends:
+  - LuckPerms

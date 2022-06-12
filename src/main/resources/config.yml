@@ -1,0 +1,64 @@
+mysql:
+  # Coloque o mesmo banco de dados no lado do bungeecord, para sincronizar as informações.
+  username: 'root'
+  password: ''
+  # formato : um.ip.qual.quer:port , se não colocar a porta, ele irá usar a porta padrao do MySQL (3306)
+  host_ip: '127.0.0.1'
+  database: 'party'
+
+# Coloque os servidores de lobby para não puxar automaticamente para eles quando o dono da party entra
+lobbies:
+  - "lobby1"
+
+#Grupos
+groups:
+  admin: "§4[Admin] "
+  coord: "§5[Coord] "
+  studio: "§d[Studio] "
+  moderador: "§2[Moderador] "
+  ajudante: "§e[Ajudante] "
+  construtor: "§a[Construtor] "
+  youtuber: "§c[YT] "
+  streamer: "§9[Streamer] "
+  mvpplus: "§b[MVP&6+&b] "
+  mvp: "§6[MVP] "
+  vip: "§a[VIP] "
+  membro: "§7"
+
+  #Os servidores nesta lista apareceram como: <amigo> está jogando Skywars Solo
+  servers_skywars:
+    - skywars1
+    - skywars2
+
+  #Os servidores nesta lista apareceram como: <amigo> está jogando Bedwars Solo
+  servers_bedwars_solo:
+    - bedwars_solo1
+    - bedwars_solo2
+  #Os servidores nesta lista apareceram como: <amigo> está jogando Bedwars Dupla
+  servers_bedwars_doubles:
+    - bedwars_doubles1
+    - bedwars_doubles2
+
+  #Os servidores nesta lista apareceram como: <amigo> está jogando Bedwars Triplo
+  servers_bedwars_triples:
+    - bedwars_triples1
+    - bedwars_triples2
+
+  #Os servidores nesta lista apareceram como: <amigo> está jogando Bedwars Quadriplo
+  servers_bedwars_quads:
+    - bedwars_quads1
+    - bedwars_quads2
+
+  #Este servidor aparecerá como: <amigo> está jogando Rankup
+  server_rankup: "rankup"
+  #Este servidor aparecerá como: <amigo> está jogando Factions
+  server_factions: "factions"
+
+  #Os servidores aqui apareceram como: <amigo> está no Lobby de Skywars
+  servers_lobby_skywars:
+    - lobby_skywars1
+    - lobby_skywars2
+  #Os servidores aqui apareceram como: <amigo> está no Lobby de Bedwars
+  servers_lobby_bedwars:
+    - lobby_bedwars1
+    - lobby_bedwars2
