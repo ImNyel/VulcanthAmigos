@@ -20,10 +20,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
 
@@ -38,7 +35,7 @@ public class Main extends VulcanthPlugin {
     }
 
     //Functions for party, do delete
-    static Main instance;
+    private static Main instance;
 
     public static Main getInstance() {
         return instance;
@@ -82,7 +79,6 @@ public class Main extends VulcanthPlugin {
     @Override
     public void start() {
         instance = this;
-
     }
 
     @Override
@@ -164,5 +160,6 @@ public class Main extends VulcanthPlugin {
     public void setProxy(ProxyServer proxy) {
         this.proxy = proxy;
     }
+
 }
 

@@ -3,12 +3,16 @@ package com.vulcanth.nyel.commands.cmd.partycmds;
 import com.vulcanth.nyel.Main;
 import com.vulcanth.nyel.commands.SubCommand;
 import com.vulcanth.nyel.helpers.Party;
+import com.vulcanth.nyel.listeners.event.EventListener;
+import com.vulcanth.nyel.listeners.more.ExpireTask;
 import dev.vulcanth.pewd.player.role.Role;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.chat.ComponentSerializer;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
@@ -89,43 +93,7 @@ public class convidar extends SubCommand {
                         .getPlayer(player)
                         .sendMessage(ComponentSerializer.parse("[\"\",{\"text\":\"" + Role.getPrefixed(getName()) + "\",\"color\":\"dark_gray\"},{\"text\":\" foi convidado(a) para a sua party!\\nEle(a) tem \",\"color\":\"yellow\"},{\"text\":\"5\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\" minutos\",\"bold\":true,\"color\":\"yellow\"},{\"text\":\" para \",\"color\":\"yellow\"},{\"text\":\"aceitar \",\"color\":\"dark_green\"},{\"text\":\"ou \",\"color\":\"yellow\"},{\"text\":\"negar\",\"color\":\"red\"},{\"text\":\".\",\"color\":\"yellow\"}]"));
             });
-
-            ProxyServer.getInstance().getScheduler().schedule(Main.getInstance(), new ExpireTask(sender.getName(), nick), 5, TimeUnit.MINUTES);
-        }
-    }
-
-    static class ExpireTask implements Runnable {
-        String senderNick;
-        String _nick;
-
-        public ExpireTask(String senderNick, String _nick) {
-            this.senderNick = senderNick;
-            this._nick = _nick;
-        }
-
-        @Override
-        public void run() {
-            try {
-                if (Party.get(senderNick) == null) {
-                    return;
-                }
-                if (Main.getPD(_nick).getInvites().contains(senderNick)) {
-                    Main.getPD(_nick).getInvites().remove(senderNick);
-                    Party.get(senderNick).getPlayers().forEach((players, role) -> {
-                        if (ProxyServer.getInstance()
-                                .getPlayer(players) == null) return;
-                        ProxyServer.getInstance()
-                                .getPlayer(players)
-                                .sendMessage(TextComponent.fromLegacyText(ChatColor.GRAY + Role.getPrefixed(_nick) + ChatColor.RED + " ignorou o pedido de party!"));
-                    });
-                    ProxyServer.getInstance()
-                            .getPlayer(_nick).sendMessage(TextComponent.fromLegacyText(ChatColor.RED + "O convite de " + ChatColor.GRAY + senderNick + "§r expirou!"));
-
-                }
-            } catch (NullPointerException throwable) {
-                throwable.printStackTrace();
-
+            ProxyServer.getInstance().getScheduler().schedule(new Plugin(), new ExpireTask(sender.getName(), nick), 5, TimeUnit.MINUTES);
             }
         }
     }
-}

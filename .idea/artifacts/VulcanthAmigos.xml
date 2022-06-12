@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VulcanthAmigos">
+    <output-path>$PROJECT_DIR$/out/artifacts/VulcanthAmigos</output-path>
+    <root id="archive" name="VulcanthAmigos.jar">
+      <element id="module-output" name="VulcanthAmigos" />
+    </root>
+  </artifact>
+</component>
